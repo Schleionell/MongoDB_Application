@@ -14,12 +14,17 @@ public class Application implements CommandLineRunner {
 	@Autowired
 	private WarehouseRepository repository;
 
+	@Autowired
+	private DatabaseInfoPrinter databaseInfoPrinter;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		databaseInfoPrinter.printDatabaseAndCollectionNames();
 
 		// Initialize product data repository
 		repository.deleteAll();
